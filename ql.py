@@ -92,6 +92,8 @@ def qlearning(s1, a, s2):
 print "Exploracion: "
 
 contadorExploracion = 0
+contadorPorEpisodio = 0
+vectorExploracion = []
 numeroEpisodios = 1000
 
 # Episodes
@@ -105,6 +107,9 @@ for i in xrange(numeroEpisodios):
         qlearning(state, actions_list[action], new_state)
         state = new_state
         contadorExploracion = contadorExploracion + 1
+        contadorExploracion += 1
+    vectorExploracion.append(contadorExploracion)
+    contadorExploracion = 0
 
 print "Calculo promedio:"
 print contadorExploracion/numeroEpisodios
@@ -115,6 +120,8 @@ print "Greedy: "
 
 Q = np.zeros((height * width, num_actions))
 contadorGreedy = 0
+contadorPorEpisodio = 0
+vectorGreedy = []
 numeroEpisodios = 1000
 
 # Episodes
@@ -132,7 +139,9 @@ for i in xrange(numeroEpisodios):
         qlearning(state, actions_list[action], new_state)
         state = new_state
         contadorGreedy += 1
-
+        contadorPorEpisodio +=1
+    vectorGreedy.append(contadorPorEpisodio)
+    contadorPorEpisodio = 0
 print "Calculo promedio:"
 print contadorGreedy/numeroEpisodios
 
@@ -142,6 +151,8 @@ print "E-Greedy e=0.9: "
 
 Q = np.zeros((height * width, num_actions))
 contadorEGreedy09 = 0
+contadorPorEpisodio = 0
+vectorEGreedy09 = []
 numeroEpisodios = 1000
 e = 0.9
 
@@ -164,6 +175,9 @@ for i in xrange(numeroEpisodios):
         qlearning(state, actions_list[action], new_state)
         state = new_state
         contadorEGreedy09 = contadorEGreedy09 + 1
+        contadorPorEpisodio += 1
+    vectorEGreedy09.append(contadorPorEpisodio)
+    contadorPorEpisodio = 0
 
 print "Calculo promedio:"
 print contadorEGreedy09/numeroEpisodios
@@ -174,6 +188,8 @@ print "E-Greedy e=0.85: "
 
 Q = np.zeros((height * width, num_actions))
 contadorEGreedy085 = 0
+contadorPorEpisodio = 0
+vectorEGreedy085 = []
 numeroEpisodios = 1000
 e = 0.85
 
@@ -196,6 +212,9 @@ for i in xrange(numeroEpisodios):
         qlearning(state, actions_list[action], new_state)
         state = new_state
         contadorEGreedy085 = contadorEGreedy085 + 1
+        contadorPorEpisodio += 1
+    vectorEGreedy085.append(contadorPorEpisodio)
+    contadorPorEpisodio = 0
 
 print "Calculo promedio:"
 print contadorEGreedy085/numeroEpisodios
@@ -206,6 +225,8 @@ print "E-Greedy e=0.8: "
 
 Q = np.zeros((height * width, num_actions))
 contadorEGreedy08 = 0
+contadorPorEpisodio = 0
+vectorEGreedy08 = []
 numeroEpisodios = 1000
 e = 0.8
 
@@ -228,6 +249,9 @@ for i in xrange(numeroEpisodios):
         qlearning(state, actions_list[action], new_state)
         state = new_state
         contadorEGreedy08 = contadorEGreedy08 + 1
+        contadorPorEpisodio += 1
+    vectorEGreedy08.append(contadorPorEpisodio)
+    contadorPorEpisodio = 0
 
 print "Calculo promedio:"
 print contadorEGreedy08/numeroEpisodios
@@ -259,4 +283,29 @@ for j in xrange(height):
     plt.plot([i+1, i+1], [0, height], 'b')
     plt.plot([0, width], [j+1, j+1], 'b')
 
+plt.show()
+
+plt.figure()
+vectorExploracion = np.array(vectorExploracion)
+plt.plot(vectorExploracion)
+plt.show()
+
+plt.figure()
+vectorGreedy = np.array(vectorGreedy)
+plt.plot(vectorGreedy)
+plt.show()
+
+plt.figure()
+vectorEGreedy09 = np.array(vectorEGreedy09)
+plt.plot(vectorEGreedy09)
+plt.show()
+
+plt.figure()
+vectorEGreedy085 = np.array(vectorEGreedy085)
+plt.plot(vectorEGreedy085)
+plt.show()
+
+plt.figure()
+vectorEGreedy08 = np.array(vectorEGreedy08)
+plt.plot(vectorEGreedy08)
 plt.show()
