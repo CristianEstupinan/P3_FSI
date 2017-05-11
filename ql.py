@@ -109,7 +109,7 @@ for i in xrange(numeroEpisodios):
         contadorExploracion = contadorExploracion + 1
         contadorExploracion += 1
     vectorExploracion.append(contadorExploracion)
-    contadorExploracion = 0
+    contadorPorEpisodio = 0
 
 print "Calculo promedio:"
 print contadorExploracion/numeroEpisodios
