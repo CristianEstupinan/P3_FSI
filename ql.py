@@ -107,12 +107,13 @@ for i in xrange(numeroEpisodios):
         qlearning(state, actions_list[action], new_state)
         state = new_state
         contadorExploracion = contadorExploracion + 1
-        contadorExploracion += 1
-    vectorExploracion.append(contadorExploracion)
+        contadorPorEpisodio += 1
+    vectorExploracion.append(contadorPorEpisodio)
     contadorPorEpisodio = 0
 
 print "Calculo promedio:"
 print contadorExploracion/numeroEpisodios
+#print Q
 
 # CALCULO PROMEDIO GREEDY
 
@@ -144,6 +145,7 @@ for i in xrange(numeroEpisodios):
     contadorPorEpisodio = 0
 print "Calculo promedio:"
 print contadorGreedy/numeroEpisodios
+#print Q
 
 # CALCULO PROMEDIO E-GREEDY e=0.9
 
@@ -154,7 +156,7 @@ contadorEGreedy09 = 0
 contadorPorEpisodio = 0
 vectorEGreedy09 = []
 numeroEpisodios = 1000
-e = 0.9
+e = 0.90
 
 
 # Episodes
@@ -181,6 +183,7 @@ for i in xrange(numeroEpisodios):
 
 print "Calculo promedio:"
 print contadorEGreedy09/numeroEpisodios
+#print Q
 
 # CALCULO PROMEDIO E-GREEDY e=0.85
 
@@ -218,6 +221,7 @@ for i in xrange(numeroEpisodios):
 
 print "Calculo promedio:"
 print contadorEGreedy085/numeroEpisodios
+#print Q
 
 # CALCULO PROMEDIO E-GREEDY e=0.8
 
@@ -286,26 +290,31 @@ for j in xrange(height):
 plt.show()
 
 plt.figure()
+print vectorExploracion
 vectorExploracion = np.array(vectorExploracion)
 plt.plot(vectorExploracion)
 plt.show()
 
 plt.figure()
+print vectorGreedy
 vectorGreedy = np.array(vectorGreedy)
 plt.plot(vectorGreedy)
 plt.show()
 
 plt.figure()
+print vectorEGreedy09
 vectorEGreedy09 = np.array(vectorEGreedy09)
 plt.plot(vectorEGreedy09)
 plt.show()
 
 plt.figure()
+print vectorEGreedy085
 vectorEGreedy085 = np.array(vectorEGreedy085)
 plt.plot(vectorEGreedy085)
 plt.show()
 
 plt.figure()
+print vectorEGreedy08
 vectorEGreedy08 = np.array(vectorEGreedy08)
 plt.plot(vectorEGreedy08)
 plt.show()
